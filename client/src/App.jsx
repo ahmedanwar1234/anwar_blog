@@ -1,15 +1,26 @@
 
 import './App.css'
+import { Button } from 'flowbite-react';
+import Header from './components/Header';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import About from './routes/About';
+import Home from './routes/Home';
+import Projects from './routes/Projects';
 
 function App() {
 
   return (
-    <>
-<div className=' text-red-400  font-bold text-3xl rounded-full bg-blue-50 w-fit text-center  mx-auto'> 
-anwar
-
-</div>
-
+    <> 
+     <BrowserRouter >
+    <Header/>
+    
+      <Routes>
+        <Route path="/" element={<Home/>}/> {/* 👈 Renders at /app/ */}
+        <Route path="/about" element={<About/>} /> {/* 👈 Renders at /app/ */}
+        <Route path="/projects" element={<Projects/>} /> {/* 👈 Renders at /app/ */}
+      </Routes>
+    </BrowserRouter>
+ 
     </>
   )
 }

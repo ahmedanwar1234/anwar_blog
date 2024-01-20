@@ -12,6 +12,7 @@ import SignIn from './routes/SignIn';
 import SignUp from './routes/SignUp';
 import Dashboard from './routes/Dashboard';
 import Projects from './routes/Projects';
+import Header from './components/Header';
 
 const router = createBrowserRouter([
   {
@@ -46,8 +47,9 @@ const router = createBrowserRouter([
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>,
-)
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <div>
+<App/>
+  </div>
+);
