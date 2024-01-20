@@ -2,6 +2,10 @@
   "name": "api",
   "version": "1.0.0",
   "description": "",
+  "exports":{
+    "require":"./index.cjs",
+    "import":"./index.js"
+  },
   "type": "module",
   "main": "index.js",
   "scripts": {
