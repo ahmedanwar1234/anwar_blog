@@ -29,7 +29,7 @@ className=' hidden lg:inline'
 <div className=' flex  gap-2 md:order-2'>
     <Button className=' w-12 h-10 hidden sm:inline' color='gray' pill><FaMoon/></Button>
     <Link to={'/sign-in'}>
-    <Button  gradientDuoTone={'purpleToBlue'} pill>Sign In</Button>
+    <Button  gradientDuoTone={'purpleToBlue'} outline pill>Sign In</Button>
 
     </Link>
     <NavbarToggle>
