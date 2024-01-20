@@ -8,7 +8,7 @@ mongoose.connect(`${process.env.MONGODB}`).then(()=>{
 }).catch(err=>{
     console.log(err)
 })
-
+const route=express.Router()
 const app=express();
 
 
