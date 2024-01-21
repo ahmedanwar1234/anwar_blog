@@ -1,11 +1,12 @@
 import User from "../models/user.model.js"
 import bcrypt from 'bcrypt'
+import { errorHandler } from "../utilis/error.js"
 
 
-export const signup=async(req,res)=>{
+export const signup=async(req,res,next)=>{
     const {username,email,password}=await req.body
    if(!username || !email ||!password ||email===''||username===''|password===''){
-    return res.status(400).json({message:'All field are required'})
+      next(errorHandler(500,'all fields are required'))
    }
 ;
    const newUser=new User({
@@ -17,7 +18,7 @@ export const signup=async(req,res)=>{
       await newUser.save()
    res.json({message:"signup successful !",newUser})
    } catch (error) {
-      res.status(500).json({message:error.message})
+      next(error)
    }
 }
 

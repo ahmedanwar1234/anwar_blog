@@ -19,7 +19,7 @@ mongoose.connect(`${process.env.MONGODB}`).then(()=>{
 // start express
 const app=express();
 
-//middle ware
+//middle wares
 app.use(express.json())
 
 // routes
@@ -40,3 +40,9 @@ app.listen(3000,()=>{
     console.log('server is running on port 3000')
 })
 
+app.use((err,req,res,next)=>{
+const statusCode=err.statusCode||500;
+const message=err.message
+
+res.status(statusCode).json({success:false,statusCode,message})
+})
