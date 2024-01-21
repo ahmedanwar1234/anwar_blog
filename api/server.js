@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 import userRoutes from './routes/user.js'
 import userAuth from './routes/auth.route.js'
 import bodyParser from 'body-parser'
+import cors from 'cors'
 
 // .env
 dotenv.config()
@@ -19,7 +20,9 @@ mongoose.connect(`${process.env.MONGODB}`).then(()=>{
 // start express
 const app=express();
 
+
 //middle wares
+app.use(cors())
 app.use(express.json())
 
 // routes
