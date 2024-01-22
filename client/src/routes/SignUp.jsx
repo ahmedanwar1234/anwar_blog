@@ -5,6 +5,7 @@ import {useForm}from 'react-hook-form'
 import axios from 'axios'
 import { useState } from 'react'
 import { useCallback } from 'react'
+import GoogleButton from '../components/GoogleButton'
 
 const SignUp = () => {
   const [error,setError]=useState('')
@@ -84,6 +85,7 @@ setLoading(false)
   </>:<> Sign Up</>}
  
 </Button>
+<GoogleButton/>
         </form>
         <div className='flex gap-2 text-sm mt-5'>
 <span>Have and account?</span>

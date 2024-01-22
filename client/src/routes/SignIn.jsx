@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useCallback } from "react";
 import { signInSuccess,signInFailuer,signInStart } from "../redux/user/userSlice";
 import {  useDispatch, useSelector } from "react-redux";
+import GoogleButton from "../components/GoogleButton";
 const SignIn = () => {
   const {loading,currentUser}=useSelector(state=>state.user)
   const [error, setError] = useState("");
@@ -111,6 +112,7 @@ dispatch(signInStart())
                 <> Sign In</>
               )}
             </Button>
+            <GoogleButton/>
           </form>
           <div className="flex gap-2 text-sm mt-5">
             <span>dont have account?</span>
