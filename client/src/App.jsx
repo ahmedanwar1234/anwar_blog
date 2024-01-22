@@ -8,6 +8,7 @@ import Home from './routes/Home';
 import Projects from './routes/Projects';
 import SignIn from './routes/SignIn';
 import SignUp from './routes/SignUp';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
         <Route path="/sign-in" element={<SignIn/>} /> {/* 👈 Renders at /app/ */}
         <Route path="/sign-up" element={<SignUp/>} /> {/* 👈 Renders at /app/ */}
       </Routes>
+      <Footer/>
     </BrowserRouter>
  
     </>
