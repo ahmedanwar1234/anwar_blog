@@ -13,7 +13,8 @@ import SignUp from './routes/SignUp';
 import Dashboard from './routes/Dashboard';
 import Projects from './routes/Projects';
 import Header from './components/Header';
-
+import { store } from './store'
+import { Provider } from 'react-redux'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -49,7 +50,7 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <div>
+  <Provider store={store}>
 <App/>
-  </div>
+  </Provider>
 );

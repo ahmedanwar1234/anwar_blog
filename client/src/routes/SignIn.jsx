@@ -5,11 +5,15 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useState } from "react";
 import { useCallback } from "react";
-
+import { signInSuccess,signInFailuer,signInStart } from "../redux/user/userSlice";
+import {  useDispatch, useSelector } from "react-redux";
 const SignIn = () => {
+  const {loading,currentUser}=useSelector(state=>state.user)
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
+  const dispatch=useDispatch()
+
 
   const {
     register,
@@ -19,19 +23,20 @@ const SignIn = () => {
   } = useForm();
 
   const onSubmit = useCallback((data) => {
-    setLoading(true);
+dispatch(signInStart())
     const { email, password } = data;
     axios
       .post("/api/auth/signin", {  email, password })
-      .then((data) => {
-        console.log(data);
+      .then((res) => {
+        console.log(res.data.rest);
         console.log("success sign in");
-        setLoading(false);
+      dispatch(signInSuccess(res.data.res))
+      console.log(currentUser)
       navigate('/')
       })
       .catch((error) => {
         setError(error.response.data.message);
-        setLoading(false);
+        dispatch(signInFailuer(error.response.data.message))
       });
   });
 
