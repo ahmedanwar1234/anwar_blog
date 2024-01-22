@@ -13,8 +13,9 @@ import SignUp from './routes/SignUp';
 import Dashboard from './routes/Dashboard';
 import Projects from './routes/Projects';
 import Header from './components/Header';
-import { store } from './store'
+import { store,persistor } from './store'
 import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -50,7 +51,10 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <PersistGate persistor={persistor}>
   <Provider store={store}>
 <App/>
   </Provider>
+  </PersistGate>
+
 );

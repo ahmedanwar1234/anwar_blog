@@ -30,7 +30,7 @@ dispatch(signInStart())
       .then((res) => {
         console.log(res.data.rest);
         console.log("success sign in");
-      dispatch(signInSuccess(res.data.res))
+      dispatch(signInSuccess(res.data.rest))
       console.log(currentUser)
       navigate('/')
       })
