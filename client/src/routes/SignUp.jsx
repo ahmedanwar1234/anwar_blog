@@ -19,7 +19,7 @@ const {register,handleSubmit,watch,formState:{errors}}=useForm()
 const onSubmit=useCallback((data)=>{
    setLoading(true)
 const {username,email,password}=data
-  axios.post('/api/auth',{username,email,password}).then((data)=>{
+  axios.post('/api/auth/signup',{username,email,password}).then((data)=>{
    
     console.log(data)
     console.log('success sign up')
