@@ -16,6 +16,7 @@ import Header from './components/Header';
 import { store,persistor } from './store'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react';
+import ThemeProvider from './components/ThemeProvider';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -53,7 +54,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <PersistGate persistor={persistor}>
   <Provider store={store}>
+    <ThemeProvider>
 <App/>
+    </ThemeProvider>
   </Provider>
   </PersistGate>
 

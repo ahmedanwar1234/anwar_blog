@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useState } from "react";
 import { useCallback } from "react";
-import { signInSuccess,signInFailuer,signInStart } from "../redux/user/userSlice";
+import { signInSuccess,signInFailure,signInStart } from "../redux/user/userSlice";
 import {  useDispatch, useSelector } from "react-redux";
 import GoogleButton from "../components/GoogleButton";
 const SignIn = () => {
@@ -37,7 +37,7 @@ dispatch(signInStart())
       })
       .catch((error) => {
         setError(error.response.data.message);
-        dispatch(signInFailuer(error.response.data.message))
+        dispatch(signInFailure(error.response.data.message))
       });
   });
 
