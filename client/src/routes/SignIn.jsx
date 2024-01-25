@@ -1,5 +1,4 @@
 import { Badge, Button, Label, Spinner, TextInput } from "flowbite-react";
-import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
@@ -19,7 +18,7 @@ const SignIn = () => {
   const {
     register,
     handleSubmit,
-    watch,
+  
     formState: { errors },
   } = useForm();
 
@@ -39,7 +38,7 @@ dispatch(signInStart())
         setError(error.response.data.message);
         dispatch(signInFailure(error.response.data.message))
       });
-  });
+  },[currentUser,dispatch,navigate]);
 
   return (
     <div className="  min-h-screen mt-20  ">
@@ -49,7 +48,7 @@ dispatch(signInStart())
           <div>
             <Link className="   font-bold  text-4xl  dark:text-white" to={"/"}>
               <span className="px-2 py-1  bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white">
-                Sahand's{" "}
+                Sahands
               </span>
               Blog
             </Link>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import { useLocation } from 'react-router'
 import DashSidePar from '../components/DashSidePar';
 import DashProfile from '../components/DashProfile';
@@ -23,7 +23,7 @@ const Dashboard = () => {
       </div>
 {
 tab==='profile'
-&&<div>
+&&<div className=' w-full'>
   <DashProfile/>
   </div>}
 
