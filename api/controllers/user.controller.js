@@ -64,3 +64,24 @@ try {
 
 
 
+
+
+
+export const deleteUser=async(req,res,next)=>{
+
+    try {
+        
+        if(req.user.id!==req.params.userId){
+            return next(errorHandler(403,'You are not allowed to delete this user'))
+        }
+        const response=await User.findByIdAndDelete(req.user.id)
+        if (!response){
+        return next(errorHandler('Cant delete the account'))
+        }
+        
+        res.json({success:true,message:"User has been deleted"})
+    } catch (error) {
+        next(error)
+    }
+
+}

@@ -148,7 +148,6 @@ export default function DashProfile() {
       dispatch(deleteUserFailure(error.message));
     }
   };
-
   const handleSignout = async () => {
     try {
       const res = await fetch('/api/user/signout', {
