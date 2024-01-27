@@ -5,6 +5,7 @@ import userRoutes from './routes/user.js'
 import userAuth from './routes/auth.route.js'
 import bodyParser from 'body-parser'
 import cors from 'cors'
+import cookieParser from 'cookie-parser'
 
 // .env
 dotenv.config()
@@ -24,8 +25,10 @@ const app=express();
 //middle wares
 app.use(cors())
 app.use(express.json())
+app.use(cookieParser())
 
 // routes
+console.log('test')
 app.use('/api/user',userRoutes)
 app.use('/api/auth',userAuth)
 app.get('/',(req,res)=>{
