@@ -6,7 +6,7 @@ import userAuth from './routes/auth.route.js'
 import bodyParser from 'body-parser'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
-
+import postRouter from './routes/posts.route.js'
 // .env
 dotenv.config()
 
@@ -30,6 +30,8 @@ app.use(cookieParser())
 // routes
 app.use('/api/user',userRoutes)
 app.use('/api/auth',userAuth)
+app.use('/api/post',postRouter)
+
 app.get('/',(req,res)=>{
     res.send('this is fuckin apiasdfasdfad3')
 })
