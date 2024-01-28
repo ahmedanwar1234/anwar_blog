@@ -44,7 +44,7 @@ if(!validUser){
    }
 const token=jwt.sign({id:validUser._id,},process.env.JWT_SECRET)
 const {password:pass,...rest}=validUser._doc
-console.log(pass)
+
    res.status(200).cookie('access_token',token,{httpOnly:true}).json({message:'succes login',rest})
 } catch (error) {
    next(error)

@@ -20,10 +20,25 @@ const DashSidePar = () => {
   },[location.search,setTab])
 
 
-  const handlSignOut=()=>{
-disbatch(signoutSuccess())
-  }
+//   const handlSignOut=()=>{
+// disbatch(signoutSuccess())
+//   }
   
+  const handleSignout = async () => {
+    try {
+      const res = await fetch('/api/user/signout', {
+        method: 'POST',
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        console.log(data.message);
+      } else {
+        disbatch(signoutSuccess());
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   return (
     <Sidebar className=' w-full md:w-56'>
 <Sidebar.Items>
@@ -34,7 +49,7 @@ Profile
 </Sidebar.Item>
 </Link>
 <Sidebar.Item active icon={HiArrowSmRight} className="cursor-pointer">
-<button className='' onClick={handlSignOut}>Sign Out</button>
+<button className='' onClick={handleSignout}>Sign Out</button>
 </Sidebar.Item>
 
 

@@ -28,7 +28,6 @@ app.use(express.json())
 app.use(cookieParser())
 
 // routes
-console.log('test')
 app.use('/api/user',userRoutes)
 app.use('/api/auth',userAuth)
 app.get('/',(req,res)=>{

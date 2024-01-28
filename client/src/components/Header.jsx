@@ -22,6 +22,21 @@ const Header = () => {
         setShowToast(true)
  
         },[disbatch])
+        const handleSignout = async () => {
+          try {
+            const res = await fetch('/api/user/signout', {
+              method: 'POST',
+            });
+            const data = await res.json();
+            if (!res.ok) {
+              console.log(data.message);
+            } else {
+              disbatch(signoutSuccess());
+            }
+          } catch (error) {
+            console.log(error.message);
+          }
+        };
   return (
     <Navbar className=' border-b-2'>
       <div className={`${truee?"fixed top-[50%] left-1/2":"hidden"} translate-x-[-50%] translate-y-[-50%]`}>
@@ -84,7 +99,7 @@ theme==='dark'?( <FaMoon />):(<FaSun/>)
 <Dropdown.Item>Profile</Dropdown.Item>
 </Link>
 <Dropdown.Divider/>
-<Dropdown.Item onClick={()=>setTruee(!truee)}>Sign Out</Dropdown.Item>
+<Dropdown.Item onClick={handleSignout}>Sign Out</Dropdown.Item>
 </Dropdown>
 ):(
   <Link to={'/sign-in'}>
