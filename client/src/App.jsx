@@ -10,6 +10,8 @@ import SignUp from './routes/SignUp';
 import Footer from './components/Footer';
 import Dashboard from './routes/Dashboard';
 import PrivateRoute from './components/PrivateRoute';
+import PrivateRouteAdmin from './components/PrivateRouteAdmin';
+import CreatePost from './components/CreatePost';
 
 function App() {
 
@@ -25,9 +27,11 @@ function App() {
         <Route path="/sign-in" element={<SignIn/>} /> {/* 👈 Renders at /app/ */}
         <Route path="/sign-up" element={<SignUp/>} /> {/* 👈 Renders at /app/ */}
         <Route element={<PrivateRoute/>}>
-
         <Route path="/dashboard" element={<Dashboard/>} /> {/* 👈 Renders at /app/ */}
         </Route>
+        <Route element={<PrivateRouteAdmin/>}>
+        <Route path="/create-post" element={<CreatePost/>} /> {/* 👈 Renders at /app/ */}
+</Route>
       </Routes>
       <Footer/>
     </BrowserRouter>
