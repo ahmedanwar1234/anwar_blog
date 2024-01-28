@@ -7,14 +7,17 @@ import 'react-quill/dist/quill.snow.css';
 import { app } from "../firebase";
 import { CircularProgressbar } from "react-circular-progressbar";
 import 'react-circular-progressbar/dist/styles.css'
+import { useNavigate } from "react-router";
 const CreatePost = () => {
   const [imageFile, setImageFile] = useState(null);
-  const [imageFileUrl, setImageFileUrl] = useState(null);
   const [imageFileUploadProgress, setImageFileUploadProgress] = useState(null);
   const [imageFileUploadError, setImageFileUploadError] = useState(null);
   const [formData, setFormData] = useState({});
-  const [imageFileUploading, setImageFileUploading] = useState(false);  const handleUploadImage = async () => {
+  const [publishError,setPublishError]=useState(null)
+  const [imageFileUploading, setImageFileUploading] = useState(false);  
 
+  const navigate=useNavigate()
+  const handleUploadImage = async () => {
  try {
   
 
@@ -41,8 +44,7 @@ const CreatePost = () => {
       );
       setImageFileUploadProgress(null);
       setImageFile(null);
-      setImageFileUrl(null);
-      setImageFileUploading(false);
+
     },
     () => {
       getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
@@ -62,10 +64,23 @@ const CreatePost = () => {
 
     const {register,handleSubmit}=useForm()
 
-    const handleSubmitFunction=(data)=>{
-        console.log(data);
+    const handleSubmitFunction=async(data)=>{
 
+      const response=await fetch('/api/post',{
+        method:'POST',
+       headers:{ 'Content-Type': 'application/json'},
+       body: JSON.stringify({image:formData.image,title:data.title,content:formData.content}),
+      })
 
+      const datajson= await response.json()
+if(!response.ok){
+  setPublishError(datajson.message);
+  return
+}
+if(response.ok){
+  setPublishError(null)
+  navigate(`/post/${data.slug}`)
+}
     }
 
 
@@ -121,8 +136,11 @@ className=" w-full h-72 object-contain"
 />
 }
 
-<ReactQuill  theme="snow" placeholder="Write somthing..." className=" h-72 mb-12"/>
+<ReactQuill onChange={(value)=>{setFormData({...formData,content:value})}}  required theme="snow" placeholder="Write somthing..." className=" h-72 mb-12"/>
 <Button type="submit" gradientDuoTone={'purpleToPink'}>Publish</Button>
+{
+  publishError && <Alert color={"failure"}>{publishError}</Alert>
+}
 </form>
     </div>
   )
