@@ -95,6 +95,13 @@ theme==='dark'?( <FaMoon />):(<FaSun/>)
   <span className=' block text-sm'>@{currentUser.username}</span>
   <span className=' block font-medium text-sm  truncate'>@{currentUser.email}</span>
 </Dropdown.Header>
+{
+  currentUser.isAdmin ?<>
+  <Link to={'/dashboard'}>
+<Dropdown.Item>Dashpoard</Dropdown.Item>
+</Link>
+  </>:<></>
+}
 <Link to={'/dashboard?tab=profile'}>
 <Dropdown.Item>Profile</Dropdown.Item>
 </Link>

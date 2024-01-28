@@ -22,6 +22,10 @@ required:true,
     profilePicture:{
         type:String,
         default:"https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?cs=srgb&dl=pexels-mohamed-abdelghaffar-771742.jpg&fm=jpg"
+    },
+    isAdmin:{
+        type:Boolean,
+        default:false
     }
 },{timestamps:true}
 )
