@@ -14,3 +14,18 @@ body{
 .ql-editor{
     font-size:1.05rem
 }
+
+
+
+
+.test {
+        border-image: linear-gradient(to left, turquoise, greenyellow) 1 0;
+  
+            font-size: 1.6rem;
+            display: grid;
+            place-items: center;
+            min-height: 200px;
+            border: 8px solid;
+            padding: 1rem;
+ 
+}
