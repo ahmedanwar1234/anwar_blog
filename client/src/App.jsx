@@ -12,6 +12,7 @@ import Dashboard from './routes/Dashboard';
 import PrivateRoute from './components/PrivateRoute';
 import PrivateRouteAdmin from './components/PrivateRouteAdmin';
 import CreatePost from './components/CreatePost';
+import UpdatePost from './routes/UpdatePost';
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
         </Route>
         <Route element={<PrivateRouteAdmin/>}>
         <Route path="/create-post" element={<CreatePost/>} /> {/* 👈 Renders at /app/ */}
+        <Route path="/update-post/:id" element={<UpdatePost/>} /> {/* 👈 Renders at /app/ */}
 </Route>
       </Routes>
       <Footer/>
