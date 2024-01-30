@@ -12,5 +12,4 @@ const route=express.Router()
  route.post('/signout',signout)
  route.get('/getusers',verifyToken,getUsers)
 
-
 export default route

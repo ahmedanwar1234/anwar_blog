@@ -19,7 +19,6 @@ const [userIdToDelete,setUserIdToDelete]=useState(null)
       try {
         const res=await fetch(`/api/user/getusers`)
 const data=await res.json();
-console.log(data)
 if(res.ok){
   setUsers(data.users)
   if(data.users.length < 9){
@@ -62,29 +61,27 @@ if(!res.ok){
   }
 
 
-  const handleDeleteUser=()=>{
-
-  }
-// const handleDeleteUser=async()=>{
-// setShowModal(false)
-//   try {
+const handleDeleteUser=async()=>{
+setShowModal(false)
+  try {
     
-//     const res=await fetch(`/api/user/deleteuser/${userIdToDelete}/${currentUser._id}`,
-//     {method:'DELETE',
+    const res=await fetch(`/api/user/delete/${userIdToDelete}`,
+    {method:'DELETE',
   
   
-//   })
-//     const data=await res.json();
-//     if(!res.ok){
-//       console.log(data.message)
-//     }else{
-//       setUsers(users.filter((post)=>post._id!==postIdToDelete))
+  })
+    const data=await res.json();
+console.log(data)
+    if(!res.ok){
+      console.log(data.message)
+    }else{
+      setUsers(users.filter((post)=>post._id!==userIdToDelete))
 
-//     }
-//   } catch (error) {
-//     console.log(error)
-//   }
-// }
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
   return (
     <div className=" table-auto  overflow-x-scroll md:mx-auto p-3 scrollbar scrollbar-track-slate-100 scrollbar-thumb-slate-300 dark:scrollbar-track-slate-700 dark:scrollbar-thumb-slate-300">
 {currentUser.isAdmin && users?.length > 0 ?(<>
